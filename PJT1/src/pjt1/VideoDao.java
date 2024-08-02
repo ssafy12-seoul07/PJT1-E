@@ -1,5 +1,8 @@
 package pjt1;
 
-public interface VideoDao {
+import java.util.List;
 
+public interface VideoDao {
+    List<Video> getAllVideos();
+    Video getVideoById(int id);
 }

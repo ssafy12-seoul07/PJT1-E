@@ -1,56 +1,29 @@
 package pjt1;
 
-public class VideoReview {
-	
-	private int videoNo;
-	private int reviewNo;
-	private String nickName;
-	private String content;
-	
-	public VideoReview(int videoNo, int reviewNo, String nickName, String content) {
-		super();
-		this.videoNo = videoNo;
-		this.reviewNo = reviewNo;
-		this.nickName = nickName;
-		this.content = content;
-	}
+public class VideoReview{
+    private String nickname;
+    private String content;
 
-	public int getVideoNo() {
-		return videoNo;
-	}
+    public VideoReview(String nickname, String content) {
+        this.nickname = nickname;
+        this.content = content;
+    }
 
-	public void setVideoNo(int videoNo) {
-		this.videoNo = videoNo;
-	}
+    // Getters and Setters
 
-	public int getReviewNo() {
-		return reviewNo;
-	}
+    public String getNickname() {
+        return nickname;
+    }
 
-	public void setReviewNo(int reviewNo) {
-		this.reviewNo = reviewNo;
-	}
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
-	public String getNickName() {
-		return nickName;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	@Override
-	public String toString() {
-		return "VideoReview [videoNo=" + videoNo + ", reviewNo=" + reviewNo + ", nickName=" + nickName + ", content="
-				+ content + "]";
-	}
-	
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
