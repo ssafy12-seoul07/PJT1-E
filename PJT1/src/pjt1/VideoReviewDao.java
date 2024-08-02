@@ -1,5 +1,8 @@
 package pjt1;
 
-public interface VideoReviewDao {
+import java.util.List;
 
+public interface VideoReviewDao {
+    List<VideoReview> getReviewsByVideoId(int videoId);
+    void addReview(int videoId, VideoReview review);
 }
