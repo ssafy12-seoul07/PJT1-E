@@ -1,0 +1,122 @@
+@startuml
+left to right direction
+skinparam classAttributeIconSize 8
+skinparam classFontSize 16
+skinparam classBackgroundColor #FFFFCC
+package "pjt1" {
+    
+    class SsafitApplication {
+        + main(args: String[]): void
+    }
+
+        class MainUi {
+            + service(): void
+            - exit(): void
+        }
+        
+        class VideoUi {
+            - videoDao: VideoDao
+            - instance: VideoUi
+            - VideoUi()
+            + getInstance(): VideoUi
+            + service(): void
+            - listVideo(): void
+            - detailVideo(): void
+        }
+        
+        class VideoReviewUi {
+            - videoReviewDao: VideoReviewDao
+            - instance: VideoReviewUi
+            - videoNo: int
+            - VideoReviewUi(videoNo: int)
+            + getInstance(videoNo: int): VideoReviewUi
+            + service(): void
+            - listReview(): void
+            - registReview(): void
+        }
+
+        class SsafitUtil {
+            - sc: Scanner
+            - SsafitUtil()
+            + input(msg: String): String
+            + inputInt(msg: String): int
+            + printLine(): void
+            + printLine(ch: char): void
+            + printLine(ch: char, len: int): void
+            + screenClear(): void
+        }
+
+        class Video {
+            - no: int
+            - title: String
+            - part: String
+            - url: String
+            + getNo(): int
+            + setNo(no: int): void
+            + getTitle(): String
+            + setTitle(title: String): void
+            + getPart(): String
+            + setPart(part: String): void
+            + getUrl(): String
+            + setUrl(url: String): void
+            + toString(): String
+        }
+
+        class VideoReview {
+            - videoNo: int
+            - reviewNo: int
+            - nickName: String
+            - content: String
+            + getVideoNo(): int
+            + setVideoNo(videoNo: int): void
+            + getReviewNo(): int
+            + setReviewNo(reviewNo: int): void
+            + getNickName(): String
+            + setNickName(nickName: String): void
+            + getContent(): String
+            + setContent(content: String): void
+        }
+
+        interface VideoDao {
+            ~ selectVideo(): List<Video>
+            ~ selectVideoByNO(no: int): Video
+        }
+
+        class VideoDaoImpl {
+            - list: List<Video>
+            - instance: VideoDaoImpl
+            - VideoDaoImpl()
+            + getInstance(): VideoDaoImpl
+            + selectVideo(): List<Video>
+            + selectVideoByNo(no: int): Video
+        }
+
+        interface VideoReviewDao {
+            ~ insertReview(videoReview: VideoReview): int
+            ~ selectReview(videoNo: int): List<VideoReview>
+        }
+
+        class VideoReviewDaoImpl {
+            - reviewNo: int
+            - videoReviewDb: Map<Integer, List<VideoReview>>
+            - instance: VideoReviewDaoImpl
+            - VideoReviewDaoImpl()
+            + getInstance(): VideoReviewDaoImpl
+            + insertReview(videoReview: VideoReview): int
+            + selectReview(videoNo: int): List<VideoReview>
+        }
+
+    VideoDao <|.. VideoDaoImpl
+    VideoReviewDao <|.. VideoReviewDaoImpl
+
+    VideoDaoImpl o-- Video
+    VideoReviewDaoImpl o-- VideoReview
+    
+    MainUi -- VideoUi
+    VideoUi -- VideoReviewUi
+    VideoUi o-- VideoDao
+    VideoReviewUi o-- VideoReviewDao
+
+    SsafitApplication -- MainUi
+}
+@enduml
