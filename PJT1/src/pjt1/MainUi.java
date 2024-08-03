@@ -11,7 +11,8 @@ public class MainUi {
         while (!exit) {
             showMenu();
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            //다음의 nextLine을 해주지않으면 개행 문자가 소비가 안되는 문제 발생
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:

@@ -9,7 +9,7 @@ public class VideoReview{
         this.content = content;
     }
 
-    // Getters and Setters
+    
 
     public String getNickname() {
         return nickname;

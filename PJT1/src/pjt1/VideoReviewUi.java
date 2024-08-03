@@ -24,11 +24,14 @@ public class VideoReviewUi {
     public void service() {
         Scanner scanner = new Scanner(System.in);
         back = false;
+        
+        showDetail();
 
         while (!back) {
+//            showDetail(); //반복문 안에 넣으면 영상의 정보가 2번씩 출력되는 문제가 생김
             showMenu();
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -43,9 +46,29 @@ public class VideoReviewUi {
         }
     }
 
+    private void showDetail() {
+        Video video = VideoUi.getInstance().getVideoDao().getVideoById(videoNo);
+        //이 부분이 있으면 두번씩 출력되는 문제 발생.
+//        if (video != null) {
+//            System.out.println("번호: " + video.getNo());
+//            System.out.println("제목: " + video.getTitle());
+//            System.out.println("카테고리: " + video.getPart());
+//            System.out.println("영상 URL: " + video.getUrl());
+//        }
+
+        List<VideoReview> reviews = videoReviewDao.getReviewsByVideoId(videoNo);
+        System.out.println("-----------------------");
+        System.out.println("영상리뷰: " + reviews.size() + "개");
+        System.out.println("-----------------------");
+        for (int i = 0; i < reviews.size(); i++) {
+            VideoReview review = reviews.get(i);
+            System.out.println(" " +(i + 1) + " " + review.getNickname() + ": " + review.getContent());
+        }
+    }
+
     private void showMenu() {
         System.out.println("-----------------------");
-        System.out.println("1. 리뷰목록");
+        System.out.println("1. 리뷰등록");
         System.out.println("0. 이전으로");
         System.out.println("-----------------------");
         System.out.print("메뉴를 선택하세요: ");
@@ -64,7 +87,7 @@ public class VideoReviewUi {
 
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         if (choice == 1) {
             registerReview(scanner);
@@ -80,5 +103,7 @@ public class VideoReviewUi {
         VideoReview review = new VideoReview(nickname, content);
         videoReviewDao.addReview(videoNo, review);
         System.out.println("리뷰가 등록되었습니다: " + nickname + " - " + content);
+        
+        //showDetail();
     }
 }
