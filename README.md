@@ -255,6 +255,6 @@ pjt1
 
 ### 검토 전, 후의 다이어그램
 - 검토 전
-![검토 전 다이어그램](./img/class diagram(검토 전).png)
+![검토 전 다이어그램](./img/class%20diagram(검토%20전).png)
 - 검토 후
-![검토 후 다이어그램](./img/class diagram(검토 후).png)
+![검토 후 다이어그램](./img/class%20diagram(검토%20후).png)
