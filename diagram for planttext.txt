@@ -10,29 +10,35 @@ package "pjt1" {
     }
 
         class MainUi {
+            - exit: boolean
             + service(): void
+            - showMenu(): void
             - exit(): void
         }
         
         class VideoUi {
-            - videoDao: VideoDao
             - instance: VideoUi
+            - back: boolean
+            - videoDao: VideoDao
             - VideoUi()
             + getInstance(): VideoUi
             + service(): void
+            - showMenu() : void
             - listVideo(): void
-            - detailVideo(): void
+            - detailVideo(videoNo: int): void
         }
         
         class VideoReviewUi {
-            - videoReviewDao: VideoReviewDao
             - instance: VideoReviewUi
             - videoNo: int
+            - back: boolean
+            - videoReviewDao: VideoReviewDao
             - VideoReviewUi(videoNo: int)
             + getInstance(videoNo: int): VideoReviewUi
             + service(): void
+            - showMenu(): void
             - listReview(): void
-            - registReview(): void
+            - registerReview(scanner: Scanner): void
         }
 
         class SsafitUtil {
@@ -63,14 +69,8 @@ package "pjt1" {
         }
 
         class VideoReview {
-            - videoNo: int
-            - reviewNo: int
             - nickName: String
             - content: String
-            + getVideoNo(): int
-            + setVideoNo(videoNo: int): void
-            + getReviewNo(): int
-            + setReviewNo(reviewNo: int): void
             + getNickName(): String
             + setNickName(nickName: String): void
             + getContent(): String
@@ -78,32 +78,28 @@ package "pjt1" {
         }
 
         interface VideoDao {
-            ~ selectVideo(): List<Video>
-            ~ selectVideoByNO(no: int): Video
+            ~ getAllVideos(): List<Video>
+            ~ getVideoById(id: int): Video
         }
 
         class VideoDaoImpl {
-            - list: List<Video>
-            - instance: VideoDaoImpl
-            - VideoDaoImpl()
-            + getInstance(): VideoDaoImpl
-            + selectVideo(): List<Video>
-            + selectVideoByNo(no: int): Video
+            - videos: List<Video>
+            + VideoDaoImpl()
+            - loadVideos(): void
+            + getAllVideos(): List<Video>
+            + getVideoById(id: int): Video
         }
 
         interface VideoReviewDao {
-            ~ insertReview(videoReview: VideoReview): int
-            ~ selectReview(videoNo: int): List<VideoReview>
+            ~ getReviewsByVideoId(videoId: int): List<VideoReview>
+            ~ addReview(videoId: int, review: VideoReview): void
         }
 
         class VideoReviewDaoImpl {
-            - reviewNo: int
-            - videoReviewDb: Map<Integer, List<VideoReview>>
-            - instance: VideoReviewDaoImpl
-            - VideoReviewDaoImpl()
-            + getInstance(): VideoReviewDaoImpl
-            + insertReview(videoReview: VideoReview): int
-            + selectReview(videoNo: int): List<VideoReview>
+            - reviewMap: Map<Integer, List<VideoReview>>
+            + VideoReviewDaoImpl()
+            + getReviewsByVideoId(videoId: int): List<VideoReview>
+            + addReview(videoId: int, review: VideoReview): void
         }
 
     VideoDao <|.. VideoDaoImpl
