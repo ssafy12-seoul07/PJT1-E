@@ -246,7 +246,7 @@ pjt1
 - back
 - getVideoDao()
 - showDetail()
-###### 2. 메소드, 변수 이름 변경
+###### 2. 메소드 이름 변경
 - selectVideo() &rarr; getAllVideos()
 - selectVideoByNO() &rarr; getVideoById()
 - selectReview() &rarr; getReviewsByVideoId()
