@@ -23,9 +23,10 @@ package "pjt1" {
             - VideoUi()
             + getInstance(): VideoUi
             + service(): void
-            - showMenu() : void
+            - showMenu(): void
             - listVideo(): void
             - detailVideo(videoNo: int): void
+            + getVideoDao(): VideoDao
         }
         
         class VideoReviewUi {
@@ -36,20 +37,10 @@ package "pjt1" {
             - VideoReviewUi(videoNo: int)
             + getInstance(videoNo: int): VideoReviewUi
             + service(): void
+            - showDetail(): void
             - showMenu(): void
             - listReview(): void
             - registerReview(scanner: Scanner): void
-        }
-
-        class SsafitUtil {
-            - sc: Scanner
-            - SsafitUtil()
-            + input(msg: String): String
-            + inputInt(msg: String): int
-            + printLine(): void
-            + printLine(ch: char): void
-            + printLine(ch: char, len: int): void
-            + screenClear(): void
         }
 
         class Video {
