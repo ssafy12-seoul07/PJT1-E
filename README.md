@@ -1,44 +1,47 @@
+# Team : 보성, 현수
+
 ### 검수 전
+
 SsafitApplication
 -----------------
 com.ssafy.fit.test
 -----------------
-+ main(args: String[]): void
+- "+" main(args: String[]): void
 
 MainUi
 ------
 com.ssafy.fit.ui
 ----------------
-+ service(): void
-- exit(): void
+- "+" service(): void
+- "-" exit(): void
 
 SsafitUtil
 ----------
 com.ssafy.fit.util
 ------------------
-- sc: Scanner
-- SsafitUtil()
-+ input(msg: String): String
-+ inputInt(msg: String): int
-+ printLine(): void
-+ printLine(ch: char): void
-+ printLine(ch: char, len: int): void
-+ screenClear(): void
+- "-" sc: Scanner
+- "-" SsafitUtil()
+- "+" input(msg: String): String
+- "+" inputInt(msg: String): int
+- "+" printLine(): void
+- "+" printLine(ch: char): void
+- "+" printLine(ch: char, len: int): void
+- "+" screenClear(): void
 
 VideoDao
 --------
 com.ssafy.fit.model.dao
 -----------------------
-# selectVideo(): List<Video>
-# selectVideoByNO(no: int): Video
+- "#" selectVideo(): List<Video>
+- "#" selectVideoByNO(no: int): Video
 
 VideoDaoImpl
 ------------
 com.ssafy.fit.model.dao
 -----------------------
-- list: List<Video>
-- instance: VideoDaoImpl
-- VideoDaoImpl()
+- "-" list: List<Video>
+- "-" instance: VideoDaoImpl
+- "-" VideoDaoImpl()
 + getInstance(): VideoDaoImpl
 + selectVideo(): List<Video>
 + selectVideoByNo(no: int): Video
@@ -77,8 +80,8 @@ VideoReviewDao
 --------------
 com.ssafy.fit.model.dao
 -----------------------
-# insertReview(videoReview: VideoReview): int
-# selectReview(videoNo: int): List<VideoReview>
+"#" insertReview(videoReview: VideoReview): int
+"#" selectReview(videoNo: int): List<VideoReview>
 
 VideoReviewDaoImpl
 ------------------
